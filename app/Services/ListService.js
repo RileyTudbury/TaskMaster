@@ -16,7 +16,6 @@ class ListService {
   }
   _createListItem(newTask, taskId) {
 
-
   }
   _deleteListItem() {
     throw new Error("Method not implemented.");
