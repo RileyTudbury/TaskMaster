@@ -1,4 +1,5 @@
 import { generateId } from "../utils.js";
+import Task from "../Models/Task.js"
 
 export default class List {
   constructor(data) {
@@ -10,11 +11,21 @@ export default class List {
   }
   //Be sure to add the methods needed to create the view template for this model
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
+
+  get Tasks() {
+    let template = ''
+    this.tasks.forEach(task => {
+      template += task.Template
+    })
+
+    return template
+  }
+
   get Template() {
     return /*html*/`
 <div class="col-12">
 <h1>${this.listName}</h1>
-
+<div>${this.tasks.template}</div>
 <form onsubmit="app.listController.createListItem(event)">
 <div class="form-group">
   <label for="task-name">Enter a new task for ${this.listName} below</label>
@@ -23,12 +34,8 @@ export default class List {
     Task</button>
 </div>
 </form>
-
-
 <button onclick="app.listController.deleteList('${this.id}')" class="btn btn-danger">Delete this List</button>
 </div>
-
-
 
 `
   }

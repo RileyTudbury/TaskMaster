@@ -1,5 +1,6 @@
 import List from "../Models/List.js";
 import _store from "../store.js"
+import Task from "../Models/Task.js";
 
 //Public
 class ListService {
@@ -15,7 +16,9 @@ class ListService {
     _store.saveState()
   }
   _createListItem(newTask, taskId) {
-
+    newTask = new Task(newTask)
+    _store.State.lists.find(list => list.id === taskId)
+    _store.State.lists
   }
   _deleteListItem() {
     throw new Error("Method not implemented.");

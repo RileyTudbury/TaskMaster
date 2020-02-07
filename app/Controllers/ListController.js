@@ -37,17 +37,22 @@ export default class ListController {
   }
 
   deleteList(id) {
+    event.preventDefault()
     _listService._deleteList(id)
     _drawLists()
   }
 
   createListItem(event) {
     event.preventDefault()
-    _listService._createListItem()
+
+    let formData = event.target
+    let newTask = formData.taskName.value
+    _listService._createListItem(newTask)
     _drawLists()
   }
 
   deleteListItem() {
+    event.preventDefault()
     _listService._deleteListItem()
     _drawLists()
   }
