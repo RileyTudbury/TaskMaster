@@ -1,7 +1,19 @@
-import ListService from "../Services/ListService.js";
+import _listService from "../Services/ListService.js";
+import _store from "../store.js"
 
 //TODO Don't forget to render to the screen after every data change.
-function _drawLists() {}
+function _drawLists() {
+  let lists = _store.State.lists
+  let listElem = document.getElementById("list-row")
+  let template = ""
+
+  lists.forEach(list => {
+    template += list.Template
+  })
+  listElem.innerHTML = template
+
+
+}
 
 //Public
 export default class ListController {
@@ -11,4 +23,31 @@ export default class ListController {
   }
 
   //TODO: Your app will need the ability to create, and delete both lists and listItems
+
+  createList(event) {
+    event.preventDefault()
+    console.log("Form Submitted")
+    let formData = event.target
+    let newList = {
+      listName: formData.listName.value
+    }
+
+    _listService._createList(newList)
+    _drawLists()
+  }
+
+  deleteList(id) {
+    _listService._deleteList(id)
+    _drawLists()
+  }
+
+  createListItem() {
+    _listService._createListItem()
+    _drawLists()
+  }
+
+  deleteListItem() {
+    _listService._deleteListItem()
+    _drawLists()
+  }
 }
