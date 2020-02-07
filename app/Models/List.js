@@ -17,7 +17,7 @@ export default class List {
 
 <form onsubmit="app.listController.createListItem(event)">
 <div class="form-group">
-  <label for="task-name">Enter a new task below</label>
+  <label for="task-name">Enter a new task for ${this.listName} below</label>
   <input type="text" class="form-control" name="taskName" id="task-name" placeholder="Type new task here...">
   <button type="submit" class="btn btn-secondary">Create a New
     Task</button>

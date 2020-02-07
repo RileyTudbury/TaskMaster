@@ -41,7 +41,8 @@ export default class ListController {
     _drawLists()
   }
 
-  createListItem() {
+  createListItem(event) {
+    event.preventDefault()
     _listService._createListItem()
     _drawLists()
   }
