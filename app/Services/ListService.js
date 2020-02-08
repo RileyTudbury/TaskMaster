@@ -22,9 +22,10 @@ class ListService {
     console.log("From _createListItem", newTask.id)
     _store.saveState()
   }
-  _deleteListItem(id) {
-    let tasks = _store.State.lists.tasks.filter(tasks => list.id !== id)
-    _store.State.lists = lists
+  _deleteListItem(taskId) {
+    let list = _store.State.lists
+    let task = list.tasks.filter(task => task.id === taskId)
+    list.tasks = task
     _store.saveState()
   }
 
