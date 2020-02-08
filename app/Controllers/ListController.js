@@ -42,18 +42,19 @@ export default class ListController {
     _drawLists()
   }
 
-  createListItem(event) {
+  createListItem(event, id) {
     event.preventDefault()
 
     let formData = event.target
-    let newTask = formData.taskName.value
-    _listService._createListItem(newTask)
+    let newTask = { taskDesc: formData.taskName.value }
+    _listService._createListItem(newTask, id)
     _drawLists()
   }
 
-  deleteListItem() {
+  deleteListItem(id) {
     event.preventDefault()
-    _listService._deleteListItem()
+    console.log("Delete task button clicked", id)
+    _listService._deleteListItem(id)
     _drawLists()
   }
 }

@@ -11,11 +11,8 @@ export default class Task {
   get Template() {
     return /*html*/`
 <p>${this.taskDesc}</p>
-
-
-
+<button onclick="app.listController.deleteListItem('${this.id}')" class="btn btn-danger">Delete this Task</button>
 `
-
   }
 
 

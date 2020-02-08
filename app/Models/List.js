@@ -25,11 +25,11 @@ export default class List {
     return /*html*/`
 <div class="col-12">
 <h1>${this.listName}</h1>
-<div>${this.tasks.template}</div>
-<form onsubmit="app.listController.createListItem(event)">
+<div>${this.Tasks}</div>
+<form onsubmit="app.listController.createListItem(event, '${this.id}')">
 <div class="form-group">
   <label for="task-name">Enter a new task for ${this.listName} below</label>
-  <input type="text" class="form-control" name="taskName" id="task-name" placeholder="Type new task here...">
+  <input type="text" class="form-control" name="taskName" placeholder="Type new task here...">
   <button type="submit" class="btn btn-secondary">Create a New
     Task</button>
 </div>

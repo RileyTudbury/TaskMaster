@@ -15,13 +15,17 @@ class ListService {
     _store.State.lists = lists
     _store.saveState()
   }
-  _createListItem(newTask, taskId) {
+  _createListItem(newTask, listId) {
     newTask = new Task(newTask)
-    _store.State.lists.find(list => list.id === taskId)
-    _store.State.lists
+    let list = _store.State.lists.find(list => list.id === listId)
+    list.tasks.push(newTask)
+    console.log("From _createListItem", newTask.id)
+    _store.saveState()
   }
-  _deleteListItem() {
-    throw new Error("Method not implemented.");
+  _deleteListItem(id) {
+    let tasks = _store.State.lists.tasks.filter(tasks => list.id !== id)
+    _store.State.lists = lists
+    _store.saveState()
   }
 
 
