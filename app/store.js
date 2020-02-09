@@ -15,7 +15,7 @@ function _loadState() {
     let stateObj = JSON.parse(localStorage.getItem("TaskMaster"));
     _state.lists = stateObj.lists.map(l => {
       let list = new List(l)
-      list.tasks = list.tasks.map(i => new Task(i))
+      list.tasks = list.tasks.map(t => new Task(t))
       return list
     })
   } catch (e) {
