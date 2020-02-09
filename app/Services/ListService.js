@@ -27,8 +27,8 @@ class ListService {
   _deleteListItem(listId, taskId) {
     console.log("From _deleteListItem")
     let list = _store.State.lists.find(list => list.id == listId)
-    list.tasks.filter(task => task.id === taskId)
-    list.tasks.splice(deleteTasks, 1)
+    let deleteTasks = list.tasks.filter(task => task.id === taskId)
+    list.tasks.splice(deleteTasks)
     console.log(list.tasks)
     _store.saveState()
   }
