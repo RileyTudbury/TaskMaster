@@ -11,21 +11,23 @@ class ListService {
     console.log(_store.State.lists)
   }
   _deleteList(id) {
-    let lists = _store.State.lists.filter(list => list.id !== id)
-    _store.State.lists = lists
-    _store.saveState()
+    if (window.confirm()) {
+      let lists = _store.State.lists.filter(list => list.id !== id)
+      _store.State.lists = lists
+      _store.saveState()
+    }
   }
   _createListItem(newTask, listId) {
     newTask = new Task(newTask)
     let list = _store.State.lists.find(list => list.id === listId)
     list.tasks.push(newTask)
-    console.log("From _createListItem", newTask.id)
+    console.log("From _createListItem", newTask, list.tasks)
     _store.saveState()
   }
   _deleteListItem(taskId) {
     let list = _store.State.lists
-    let task = list.tasks.filter(task => task.id === taskId)
-    list.tasks = task
+    let tasks = list.tasks.filter(task => task.id === taskId)
+    list.tasks = tasks
     _store.saveState()
   }
 
