@@ -51,10 +51,10 @@ export default class ListController {
     _drawLists()
   }
 
-  deleteListItem(listId, taskId) {
+  deleteListItem(taskId) {
     event.preventDefault()
     console.log("Delete task button clicked", taskId)
-    _listService._deleteListItem(listId, taskId)
+    _listService._deleteListItem(taskId)
     _drawLists()
   }
 }

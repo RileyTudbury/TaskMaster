@@ -21,15 +21,13 @@ class ListService {
     newTask = new Task(newTask)
     let list = _store.State.lists.find(list => list.id === listId)
     list.tasks.push(newTask)
-    console.log("From _createListItem", newTask, list.tasks)
+    console.log("From _createListItem", newTask)
     _store.saveState()
   }
-  _deleteListItem(listId, taskId) {
-    console.log("From _deleteListItem")
-    let list = _store.State.lists.find(list => list.id == listId)
-    let deleteTasks = list.tasks.filter(task => task.id === taskId)
-    list.tasks.splice(deleteTasks)
-    console.log(list.tasks)
+  _deleteListItem(taskId) {
+    let list = _store.State.lists
+    let tasks = list.tasks.filter(task => task.id === taskId)
+    list.tasks = tasks
     _store.saveState()
   }
 
