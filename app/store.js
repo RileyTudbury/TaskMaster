@@ -11,15 +11,14 @@ let _state = {
 
 //NOTE this method will get the lists from local storage at the start of the app
 function _loadState() {
-  let data = JSON.parse(localStorage.getItem("TaskMaster"));
-  let list
-  if (data) {
-    _state.lists = data.lists.map(l => {
-      list = new List(l)
-      list.tasks = list.tasks.map(task => new Task(task))
+  try {
+    let stateObj = JSON.parse(localStorage.getItem("TaskMaster"));
+    _state.lists = stateObj.lists.map(l => {
+      let list = new List(l)
+      list.tasks = list.tasks.map(i => new Task(i))
       return list
-    });
-    _state = list;
+    })
+  } catch (e) {
   }
 }
 
@@ -39,5 +38,5 @@ class Store {
 
 _loadState();
 
-const store = new Store();
-export default store;
+const STORE = new Store();
+export default STORE;
