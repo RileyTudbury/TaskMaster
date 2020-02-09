@@ -25,10 +25,12 @@ class ListService {
     _store.saveState()
   }
   _deleteListItem(listId, taskId) {
-    let list = _store.State.lists.find(list => list.id === listId)
-    let tasks = list.tasks.filter(task => task.id != taskId)
-    list.tasks = tasks
-    _store.saveState()
+    if (window.confirm()) {
+      let list = _store.State.lists.find(list => list.id === listId)
+      let tasks = list.tasks.filter(task => task.id != taskId)
+      list.tasks = tasks
+      _store.saveState()
+    }
   }
 
 
