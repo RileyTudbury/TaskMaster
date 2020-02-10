@@ -27,7 +27,7 @@ export default class List {
 
   get Template() {
     return /*html*/`
-<div class="col-12">
+<div class="col-3">
 <h1>${this.listName}</h1>
 <div>${this.Tasks}</div>
 <form onsubmit="app.listController.createListItem(event, '${this.id}')">
